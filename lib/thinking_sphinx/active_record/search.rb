@@ -22,11 +22,11 @@ module ThinkingSphinx
             # Searches for results limited to a single model. See
             # ThinkingSphinx::Search#search for syntax examples.
             #
-            def search(*args)
+            def search_with_sphinx(*args)
               options = args.extract_options!
               options[:class] = self
               args << options
-              ThinkingSphinx::Search.search(*args)
+              ThinkingSphinx::Search.search(*args).compact
             end
 
             def search_count(*args)
