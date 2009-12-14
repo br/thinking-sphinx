@@ -1,7 +1,7 @@
 module ThinkingSphinx
   module ActiveRecord
     module HasManyAssociation
-      def search(*args)
+      def search_with_sphinx(*args)
         foreign_key = @reflection.primary_key_name
         stack = [@reflection.options[:through]].compact
         
@@ -9,8 +9,7 @@ module ThinkingSphinx
         (@reflection.klass.sphinx_indexes || []).each do |index|
           attribute = index.attributes.detect { |attrib|
             attrib.columns.length == 1 &&
-            attrib.columns.first.__name  == foreign_key.to_sym &&
-            attrib.columns.first.__stack == stack
+            attrib.columns.first.__name  == foreign_key.to_sym
           }
           break if attribute
         end
