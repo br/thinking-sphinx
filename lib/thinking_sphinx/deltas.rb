@@ -1,5 +1,5 @@
 require 'thinking_sphinx/deltas/default_delta'
-require 'thinking_sphinx/deltas/delayed_delta'
+#require 'thinking_sphinx/deltas/delayed_delta'
 require 'thinking_sphinx/deltas/datetime_delta'
 
 module ThinkingSphinx
@@ -9,8 +9,8 @@ module ThinkingSphinx
       case delta_option
       when TrueClass, :default
         DefaultDelta.new index, index.local_options
-      when :delayed
-        DelayedDelta.new index, index.local_options
+      # when :delayed
+      #   DelayedDelta.new index, index.local_options
       when :datetime
         DatetimeDelta.new index, index.local_options
       when FalseClass, nil
